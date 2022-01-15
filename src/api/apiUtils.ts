@@ -6,6 +6,8 @@ export const createParam = (name: string, list: any) => {
           return string + "&team_ids[]=" + value;
         case "dates":
           return string + "&dates[]=" + value;
+        case "player_ids":
+          return string + "&player_ids[]=" + value;
         default:
           return "";
       }

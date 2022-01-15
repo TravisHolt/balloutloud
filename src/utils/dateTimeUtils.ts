@@ -8,9 +8,9 @@ const days = [
   "Saturday",
 ];
 
-export const getTodayYYYYMMDD = () => {
+export const getTodayYYYYMMDD = (getPreviousDay = false) => {
   const today = new Date();
-  let day: number | string = today.getDate() - 1;
+  let day: number | string = getPreviousDay ? today.getDate() - 1 :  today.getDate();
   let month: number | string = today.getMonth() + 1;
   const year = today.getFullYear();
 

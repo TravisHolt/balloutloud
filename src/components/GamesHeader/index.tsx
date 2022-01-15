@@ -13,7 +13,6 @@ const useStyles = makeStyles({
   dateContainer: {
     display: "flex",
     overflow: "scroll",
-    borderBottom: '1rem solid black',
   },
 });
 

@@ -9,6 +9,7 @@ export const useGameCardStyles = makeStyles((theme: Theme) => ({
     borderRadius: theme.border.borderRadius,
     boxShadow: theme.borderBox.boxShadow,
     border: `1px solid ${theme.palette.grey[200]}`,
+    background: 'white',
   },
   timeHeader: {
     display: "flex",
@@ -19,7 +20,8 @@ export const useGameCardStyles = makeStyles((theme: Theme) => ({
     marginBottom: ".5rem",
     fontWeight: 800,
     "& > span": {
-      color: "red",
+      color: "#c8102e",
+      fontWeight: 600,
     },
   },
   teamRow: {

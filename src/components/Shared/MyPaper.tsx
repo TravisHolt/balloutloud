@@ -18,7 +18,9 @@ const useStyles = makeStyles((theme: Theme) => ({
     boxShadow: theme.borderBox.boxShadow,
     borderRadius: theme.border.borderRadius,
     padding: theme.spacing(2, 4, 4, 4),
-    flexGrow: (props: StyleProps) => props.flexGrow,
+    boxSizing: 'border-box',
+    width: '100%',
+    background: 'white',
   },
   header: {
     ...theme.typography.h5,
@@ -32,10 +34,10 @@ export const MyPaper = ({ children, headerText, flexGrow = 1, className= '' }: P
   return (
     <div className={`${classes.paper} ${className}`}>
       {headerText && (
-        <>
+        <div>
           <div className={classes.header}>{headerText}</div>
           <Divider sx={{ marginBottom: 1 }} />
-        </>
+        </div>
       )}
       <>{children}</>
     </div>
