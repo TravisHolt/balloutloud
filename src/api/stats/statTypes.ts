@@ -44,6 +44,8 @@ export type StatData = {
   stl: number;
   team: TeamData
   turnover: number;
-}
+};
+
+export type FetchNightlyStats = ({ showYesterday }: { showYesterday?: boolean }) => Promise<StatData[]>
 
 export type FetchAllStats = ({}: any) => Promise<StatResponse>
