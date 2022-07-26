@@ -1,39 +1,20 @@
-import { useEffect, useState } from "react";
-import { fetchTodaysGames, fetchTomorrowsGames } from "./api/games/games";
-import { ThemeProvider } from "@mui/styles";
-import { GameResponseData } from "./api/games/gameTypes";
-import { createTheme } from "@mui/material";
-import { GameHeader } from "./components/GamesHeader";
-import { HomePage } from './components/Home';
-
-const theme = createTheme({
-  borderBox: {
-    boxShadow: 'rgba(0, 0, 0, 0.25) 0px 25px 50px -12px',
-  },
-  border: {
-    borderRadius: 8
-  }
-});
+import { useAuth0 } from "@auth0/auth0-react";
+import { Route, Routes } from "react-router-dom";
+import { Navbar } from "./components/Navbar";
+import { Home } from "./pages/Home";
+import { StatsHome } from "./pages/Stats";
+import { TeamsList } from "./pages/Teams";
 
 function App() {
-  const [todayGames, setTodaysGames] = useState<GameResponseData | null>(null);
-  const [tomorrowGames, setTomorrowsGames] = useState<GameResponseData | null>(null);
-
-  useEffect(() => {
-    const fetchPlayerData = async () => {
-      const [todaysGames, tomorrowsGames] = await Promise.all([fetchTodaysGames(), fetchTomorrowsGames()]);
-      setTodaysGames(todaysGames);
-      setTomorrowsGames(tomorrowsGames);
-    };
-
-    fetchPlayerData();
-  }, []);
-
   return (
-    <ThemeProvider theme={theme}>
-      <GameHeader todaysGames={todayGames?.data} tomorrowsGames={tomorrowGames?.data}/>
-      <HomePage />
-    </ThemeProvider>
+    <>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/teams" element={<TeamsList />} />
+        <Route path="/stats" element={<StatsHome />} />
+      </Routes>
+    </>
   );
 }
 
